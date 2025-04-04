@@ -17,14 +17,23 @@ public class SecurityConfig {
 	
 	private final CustomUserDetailServices services;
 	
-	
 	public SecurityConfig(CustomUserDetailServices services) {
 		this.services = services;
 	}
 
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+	
+		http.authorizeHttpRequests(req -> req
+		        .requestMatchers("/login").permitAll() // login and logout no need authentication
+		        .anyRequest().authenticated()); //all request need authentication
+		//custom login Html page setup
 		http.formLogin(form -> form.loginPage("/login"));
+		//logout added
+		 http.logout(logout -> logout.logoutUrl("/logout"));  
+		
+
+		
 		return http.build();
 	}
 	
