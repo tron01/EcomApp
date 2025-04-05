@@ -2,6 +2,8 @@ package com.ty.EcomApp.Controller;
 
 import java.security.Principal;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +20,13 @@ public class HomeController {
 		if(principal!=null) {
 			model.addAttribute("username",principal.getName());
 		}
+		//get role
+		 Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+	     String role = authentication.getAuthorities().stream()
+	                .map(GrantedAuthority::getAuthority)
+	                .findFirst().orElse("ROLE_USER");
+
+	     model.addAttribute("role", role);
 		return "home";
 	}
 	@GetMapping("/login")
