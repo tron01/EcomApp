@@ -26,6 +26,7 @@ public class SecurityConfig {
 	
 		http.authorizeHttpRequests(req -> req
 		        .requestMatchers("/login","/error").permitAll() // paths no need authentications
+		        .requestMatchers("/admin/**").hasAuthority("ADMIN") // users with role ADMIN can view ADMIN paths
 		        .anyRequest().authenticated()); //all request need authentication
 		//custom login Html page setup
 		http.formLogin(form -> form.loginPage("/login"));
