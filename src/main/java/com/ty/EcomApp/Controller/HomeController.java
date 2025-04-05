@@ -14,8 +14,13 @@ public class HomeController {
 		return "home";
 	}
 	@GetMapping("/login")
-	String login() {
-		return "login";
+	String login(HttpServletRequest request) {
+		// If user is already authenticated, redirect to home
+        if (request.getUserPrincipal() != null) {
+            return "redirect:/";
+        }
+        // Show login page if not authenticated
+        return "login";
 	}
 	@GetMapping("/logout")
 	void logout(HttpServletRequest  request) {
