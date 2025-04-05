@@ -1,7 +1,10 @@
 package com.ty.EcomApp.Controller;
 
+import java.security.Principal;
+
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -10,7 +13,11 @@ import jakarta.servlet.http.HttpServletRequest;
 public class HomeController {
 
 	@GetMapping("/")
-	private String home() {
+	private String home(Model model ,Principal principal) {
+		//get user login info on home page
+		if(principal!=null) {
+			model.addAttribute("username",principal.getName());
+		}
 		return "home";
 	}
 	@GetMapping("/login")
