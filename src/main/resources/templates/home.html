@@ -8,7 +8,8 @@
 <body class="d-flex justify-content-center align-items-center vh-100">
     <div class="card p-5 shadow-lg text-center " style="width: 350px;">
         <h1>HOME PAGE</h1>
-        <button class="btn p-2 btn-danger text-center"><a class="text-white" href="/logout">Logout</a></button>
+        <h2> Welcome , <span th:text="${username}"> </span>!</h2>
+        <button class="btn p-2  btn-danger text-center"><a class="text-white" href="/logout">Logout</a></button>
     </div>
 </body>
 </html>
