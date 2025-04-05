@@ -8,6 +8,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -38,11 +39,6 @@ public class HomeController {
         // Show login page if not authenticated
         return "login";
 	}
-	@GetMapping("/logout")
-	void logout(HttpServletRequest  request) {
-		 // Manually invalidate session
-        request.getSession().invalidate();
-        // Remove authentication details
-        SecurityContextHolder.clearContext();
-	}
+	
+
 }

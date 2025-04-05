@@ -25,15 +25,13 @@ public class SecurityConfig {
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 	
 		http.authorizeHttpRequests(req -> req
-		        .requestMatchers("/login").permitAll() // login and logout no need authentication
+		        .requestMatchers("/login","/error").permitAll() // paths no need authentications
 		        .anyRequest().authenticated()); //all request need authentication
 		//custom login Html page setup
 		http.formLogin(form -> form.loginPage("/login"));
-		//logout added
-		 http.logout(logout -> logout.logoutUrl("/logout"));  
-		
+		//logout added 
+		http.logout(logout->logout.logoutSuccessUrl("/"));
 
-		
 		return http.build();
 	}
 	
