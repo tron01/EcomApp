@@ -42,7 +42,7 @@ public class AdminController {
     }
     
     // Show edit user form
-    @GetMapping("/edit/{id}")
+    @GetMapping("/users/edit/{id}")
     public String editUser(@PathVariable int id, Model model) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found"));
@@ -57,7 +57,7 @@ public class AdminController {
         return "redirect:/admin/users"; // Redirect to user list
     }
 
-    @GetMapping("/delete/{id}")
+    @GetMapping("/users/delete/{id}")
     public String deleteUser(@PathVariable int id) {
         userRepository.deleteById(id);
         return "redirect:/admin/users";
