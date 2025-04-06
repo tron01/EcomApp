@@ -24,8 +24,8 @@
                     <td th:text="${user.username}"></td>
                     
                     <td>
-                        <a th:href="@{/users/edit/{id}(id=${user.id})}" class="btn btn-sm btn-warning">Edit</a>
-                        <a th:href="@{/users/delete/{id}(id=${user.id})}" class="btn btn-sm btn-danger">Delete</a>
+                        <a th:href="@{/admin/edit/{id}(id=${user.id})}" class="btn btn-sm btn-warning">Edit</a>
+                        <a th:href="@{/admin/delete/{id}(id=${user.id})}" class="btn btn-sm btn-danger">Delete</a>
                     </td>
                 </tr>
             </tbody>
