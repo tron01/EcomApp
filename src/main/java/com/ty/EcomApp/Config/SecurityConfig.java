@@ -25,7 +25,7 @@ public class SecurityConfig {
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 	
 		http.authorizeHttpRequests(req -> req
-		        .requestMatchers("/login","/error").permitAll() // paths no need authentications
+		        .requestMatchers("/login","/error","/signup").permitAll() // paths no need authentications
 		        .requestMatchers("/admin/**").hasAuthority("ADMIN") // users with role ADMIN can view ADMIN paths
 		        .anyRequest().authenticated()); //all request need authentication
 		//custom login Html page setup
