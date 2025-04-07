@@ -69,16 +69,13 @@ public class HomeController {
             model.addAttribute("error", "Passwords do not match!");
             return "signup";
         }
-
         if(repository.findByUsername(user.getUsername()) != null) {
             model.addAttribute("error", "Username already exists!");
             return "signup";
         }
         User u1=service.create_user(user);
 		System.out.println(u1);
-        return "redirect:/login"; // Redirect to login page with success message
-		
-		
+        return "redirect:/login"; // Redirect to login page with success message		
 	}	
 
 }
