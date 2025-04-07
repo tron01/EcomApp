@@ -19,9 +19,6 @@ public class ProductModel {
     private Long id;
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    private Category category;
 
 	public Long getId() {
 		return id;
@@ -39,13 +36,7 @@ public class ProductModel {
 		this.name = name;
 	}
 
-	public Category getCategory() {
-		return category;
-	}
 
-	public void setCategory(Category category) {
-		this.category = category;
-	}
     
     
 }
